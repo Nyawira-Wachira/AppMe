@@ -27,5 +27,9 @@ posts = [
 def home():
     return render_template('home.html',posts=posts) 
 
+@app.route('/movies')
+def movies():
+    return render_template('movie.html',title='Movies') 
+
 if __name__ == "__main__":
         app.run(debug=True)    

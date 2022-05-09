@@ -16,7 +16,7 @@ posts = [
         'date_posted': 'May 7, 2022'
     },
     {
-        'author': '',
+        'author': 'Bradley Smith',
         'title': 'Third Pitch',
         'description' : 'Third Pitch description',
         'date_posted': 'May 8, 2022'

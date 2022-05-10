@@ -25,7 +25,6 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
-              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Pitches
@@ -33,13 +32,16 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="/movies">Movie Posts</a></li>
                   <li><a class="dropdown-item" href="/jokes">Jokes</a></li>
-                  <li><a class="dropdown-item" href="/quotes">Quotes</a></li>
+                  
                 </ul>
               </li>
               <li class="nav-item">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/account">Account</a>
+                  <a class="nav-link" href="/new_post">New Post</a>
+                </li>        
+                <li class="nav-item">
+                    <a class="nav-link" href="/account">Your Profile</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>

@@ -3,15 +3,15 @@ import os
 import secrets
 from PIL import Image
 from email.policy import default
-from flask import Flask, render_template, flash,redirect, url_for, flash, redirect, request
+from flask import Flask, render_template, flash,redirect, url_for, flash, redirect, request, abort
 from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from app.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 # app = Flask(__name__)
 
-posts = [
+tasks = [
     {
         'author': 'Linda Jones',
         'title': 'First Pitch',
@@ -32,9 +32,10 @@ posts = [
     }
 ]
 
+
 @app.route('/')
 def home():
-    return render_template('home.html',posts=posts) 
+    return render_template('home.html',tasks=tasks) 
 
 @app.route('/movies')
 def movies():
@@ -91,26 +92,40 @@ def save_picture(form_picture):
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
+    posts = Post.query.all()  
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
         current_user.username = form.username.data
-        # current_user.email = form.email.data
+        current_user.email = form.email.data
         db.session.commit()
+        db.drop_all()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
-        # form.email.data = current_user.email
+        form.email.data = current_user.email
     image_file = url_for('static', filename='image/img3.jpeg/')
-    return render_template('account.html', title='Account',
+    return render_template('account.html', title='Account', posts=posts,
                            image_file=image_file, form=form)
-
 
 # @app.route("/account")
 # @login_required
 # def account():
 #     return render_template('account.html', title='Account')
        
+
+@app.route("/new_post", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post',
+                           form=form, legend='New Post')

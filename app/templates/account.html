@@ -5,7 +5,7 @@
       <img class="rounded-circle account-img" src="{{ image_file }}">
       <div class="media-body">
         <h2 class="account-heading">{{ current_user.username }}</h2>
-        <!-- <p class="text-secondary">{{ current_user.email }}</p> -->
+        <p class="text-secondary">{{ current_user.email }}</p>
       </div>
     </div>
       <form method="POST" action="" enctype="multipart/form-data">
@@ -26,7 +26,7 @@
                       {{ form.username(class="form-control form-control-lg") }}
                   {% endif %}
               </div>
-              <!-- <div class="form-group">
+              <br><div class="form-group">
                   {{ form.email.label(class="form-control-label") }}
                   {% if form.email.errors %}
                       {{ form.email(class="form-control form-control-lg is-invalid") }}
@@ -38,8 +38,8 @@
                   {% else %}
                       {{ form.email(class="form-control form-control-lg") }}
                   {% endif %}
-              </div> -->
-              <div class="form-group">
+              </div>
+              <br><div class="form-group">
                   {{ form.picture.label() }}
                   {{ form.picture(class="form-control-file") }}
                   {% if form.picture.errors %}
@@ -49,9 +49,23 @@
                   {% endif %}
               </div>
           </fieldset>
-          <div class="form-group">
+          <br><div class="form-group">
               {{ form.submit(class="btn btn-outline-info") }}
           </div>
       </form>
-  </div>   
+</div> 
+<div class="pitch">
+    {% for post in posts %}
+  <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+    </article>
+  {% endfor %} 
+</div>
 {% endblock content %}

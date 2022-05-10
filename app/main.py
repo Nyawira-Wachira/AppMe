@@ -108,8 +108,10 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='image/img3.jpeg/')
+    
     return render_template('account.html', title='Account', posts=posts,
                            image_file=image_file, form=form)
+                           
 
 # @app.route("/account")
 # @login_required
@@ -129,3 +131,6 @@ def new_post():
         return redirect(url_for('account'))
     return render_template('create_post.html', title='New Post',
                            form=form, legend='New Post')
+                           
+
+

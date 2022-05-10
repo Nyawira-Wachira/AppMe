@@ -1,4 +1,4 @@
-# import email
+import email
 import os
 import secrets
 from PIL import Image
@@ -8,8 +8,11 @@ from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from app.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Mail,Message
 
 # app = Flask(__name__)
+
+mail=Mail(app)
 
 tasks = [
     {
@@ -32,7 +35,6 @@ tasks = [
     }
 ]
 
-
 @app.route('/')
 def home():
     return render_template('home.html',tasks=tasks) 
@@ -43,17 +45,33 @@ def movies():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
     form = RegistrationForm() 
-    if form.validate_on_submit():
+    if request.method == 'POST':
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
-        db.session.commit()
-        flash('Account created successfully. You can Login', 'success')
+        # db.commit()
+        db.create_all()
+        msg = Message('Hello, Welcome to AppMe.', sender = 'abigail.nyawira22@gmail.com', recipients = ['abigailwachira@gmail.com'])
+        msg.body = "Your account has been created successfully!"
+        mail.send(msg)
+        flash('Account created successfully and Email sent! You can now Login', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', form=form)
+
+
+
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
+    # form = RegistrationForm() 
+    # if form.validate_on_submit():
+    #     hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+    #     user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+    #     db.session.add(user)
+    #     db.session.commit()
+    #     flash('Account created successfully. You can Login', 'success')
+    #     return redirect(url_for('login'))
+    # return render_template('register.html', title='Register', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

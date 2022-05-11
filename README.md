@@ -14,7 +14,6 @@ in a database. The application also provides various categories of pitches.
 ## Previews
 
 ![Screenshot from 2022-05-12 02-33-45](https://user-images.githubusercontent.com/100156865/167965927-b8caacf4-b1da-4a93-9c49-c98719c3e745.png)
-
 ![Screenshot from 2022-05-12 02-32-10](https://user-images.githubusercontent.com/100156865/167965961-6ae0e8db-671a-45ef-9a58-6c36a8d90198.png)
 
 ## Installation Requirements

@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
     %}
-    <h1 align="center">{% block header %}Posts{% endblock %}</h1>
+    <h1 align="center">{% block header %}Pitches{% endblock %}</h1>
     <div id="posts">
       {% for post in posts %}
       <div class="card border-dark">
@@ -44,7 +44,7 @@
                     <div class="btn-group">
                       <button
                         type="button"
-                        class="btn btn-sm btn-primary dropdown-toggle"
+                        class="btn btn-sm btn-info dropdown-toggle"
                         data-bs-toggle="dropdown"
                       ></button>
                       <ul class="dropdown-menu">
@@ -93,11 +93,9 @@
       <br/ > {% endfor %}
     </div>
     {% block footer %}
-    <div align="center">
-      <a href="/create-post"
-        ><button type="button" class="btn btn-primary btn-lg">
-          Create a Post
-        </button></a
-      >
+    <div class ="pich" align="center">
+      <a href="/create-post"><button type="button" class="btn btn-outline-info">
+          Create a Pitch
+        </button></a>
     </div>
     {% endblock %} {% endblock %}

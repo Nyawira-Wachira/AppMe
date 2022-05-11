@@ -11,7 +11,8 @@ The application enables users to create posts, to view posts created by other pe
 people's posts and to view comments written by other people. AppMe also utilises flask mail to send email notifications to new sign in users and sqalchemy to store user infromation
 in a database. The application also provides various categories of pitches.
 
-## Preview
+## Previews
+![Screenshot from 2022-05-12 02-33-45](https://user-images.githubusercontent.com/100156865/167964931-9fd97866-a5cf-4c2b-b92e-b23d5bff33e4.png)
 
 ![Screenshot from 2022-05-11 22-22-04](https://user-images.githubusercontent.com/100156865/167929993-09991b8d-26db-43ab-98f0-695d55c9fa81.png)
 
@@ -42,11 +43,6 @@ in a database. The application also provides various categories of pitches.
 * To run the application, open the cloned file in terminal and run the following command:
 
         $ python3 wsgi.py
-        
-
-* To run tests for the application run the following command:
-
-        $ python3 app/test.py
 
 ## Technologies Used
 Technologies used in the development of this project include:

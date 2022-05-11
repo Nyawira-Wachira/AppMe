@@ -2,16 +2,9 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
 from . import db
-import os 
-from flask import send_from_directory  
 from app import app
 
 views = Blueprint("views", __name__)
-
-@views.route('/favicon.ico') 
-def favicon(): 
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/favicon.icon')
-
 
 @views.route("/")
 @views.route("/home")

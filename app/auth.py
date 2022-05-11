@@ -4,12 +4,16 @@ from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail,Message
-
+import os 
+from flask import send_from_directory  
 
 app = Flask(__name__)
 
 auth = Blueprint("auth", __name__)
 
+@auth.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/favicon.icon')
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():

@@ -1,8 +1,12 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Flask, Blueprint, render_template, redirect, url_for, request, flash
 from . import db
 from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_mail import Mail,Message
+
+
+app = Flask(__name__)
 
 auth = Blueprint("auth", __name__)
 
@@ -57,10 +61,30 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            flash('User created!')
+            mail = Mail(app)
+            msg = Message('Hello, Welcome to AppMe.', sender = 'abigail.nyawira22@gmail.com', recipients = ['abigailwachira@gmail.com'])
+            msg.body = "Your account has been created successfully!"
+            # mail.send(msg)
+            flash('Account created successfully and Email sent!', 'success')
             return redirect(url_for('views.home'))
 
     return render_template("signup.html", user=current_user)
+
+
+@auth.route("/tech")
+@login_required
+def tech():
+    return render_template("tech.html")
+
+@auth.route("/hero")
+@login_required
+def hero():  
+    return render_template("hero.html") 
+    
+@auth.route("/quotes")
+@login_required
+def quotes():  
+    return render_template("quotes.html") 
 
 
 @auth.route("/logout")

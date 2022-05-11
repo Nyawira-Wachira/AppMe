@@ -15,6 +15,13 @@ def create_app():
     app.config['SECRET_KEY'] = '0b6bd163c27f7d7512077a91'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///account.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = 'abigail.nyawira22@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'WaChIrA07!'
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    
     db.init_app(app)
 
     from .views import views
@@ -43,23 +50,3 @@ def create_database(app):
         print("Created database!")
 
         
-# from app import main
-
-
-# app.config['SECRET_KEY'] = '0b6bd163c27f7d7512077a91'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///account.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['MAIL_SERVER']='smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = 'abigail.nyawira22@gmail.com'
-# app.config['MAIL_PASSWORD'] = 'WaChIrA07!'
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# db = SQLAlchemy(app)
-# bcrypt = Bcrypt(app)
-# login_manager = LoginManager(app)
-# login_manager.login_view = 'login'
-# login_manager.login_message_category = 'info'
-
-
-

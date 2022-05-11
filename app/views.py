@@ -115,8 +115,4 @@ def like(post_id):
 
     return redirect (url_for('views.home'))
 
-    # return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
-
-
-
-    #  
+   

@@ -12,15 +12,10 @@ people's posts and to view comments written by other people. AppMe also utilises
 in a database. The application also provides various categories of pitches.
 
 ## Previews
-![Screenshot from 2022-05-12 02-33-45](https://user-images.githubusercontent.com/100156865/167964931-9fd97866-a5cf-4c2b-b92e-b23d5bff33e4.png)
 
-![Screenshot from 2022-05-11 22-22-04](https://user-images.githubusercontent.com/100156865/167929993-09991b8d-26db-43ab-98f0-695d55c9fa81.png)
+![Screenshot from 2022-05-12 02-33-45](https://user-images.githubusercontent.com/100156865/167965927-b8caacf4-b1da-4a93-9c49-c98719c3e745.png)
 
-
-### Link
-
-[Project live link ]
-
+![Screenshot from 2022-05-12 02-32-10](https://user-images.githubusercontent.com/100156865/167965961-6ae0e8db-671a-45ef-9a58-6c36a8d90198.png)
 
 ## Installation Requirements
 * python version 3 

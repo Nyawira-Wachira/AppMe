@@ -9,7 +9,7 @@
 AppMe is an application created through flask framework that enables registered users to login to their user accounts, and new users to create accounts through sign in.
 The application enables users to create posts, to view posts created by other people and to like posts displayed. The application also enables users to write comments on 
 people's posts and to view comments written by other people. AppMe also utilises flask mail to send email notifications to new sign in users and sqalchemy to store user infromation
-in a database.
+in a database. The application also provides various categories of pitches.
 
 ## Preview
 
@@ -25,7 +25,6 @@ in a database.
 * python version 3 
 * pip
 * flask
-* flask mail
 * sqlalchemy
 * The virtual environment
 
@@ -88,4 +87,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-**Copyright (c) 2022 Nyawira Wachira
+**Copyright (c) 2022 Nyawira Wachira**
